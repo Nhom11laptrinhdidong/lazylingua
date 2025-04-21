@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "306752994500",
+    "project_id": "lazylingua",
+    "storage_bucket": "lazylingua.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:306752994500:android:614306c70a2bfe8f9a9d91",
+        "android_client_info": {
+          "package_name": "com.example.lazylingua"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "306752994500-pjdmbunaud0rb2l072mr3keqd3u31oim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoAD2w3FE7lcB8wgGwpSuoTldPsbJ9nrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "306752994500-pjdmbunaud0rb2l072mr3keqd3u31oim.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "306752994500-rftvajk9drjgdhb2kvrol57ck14v0k03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.lazylingua"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
