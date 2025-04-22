@@ -71,4 +71,12 @@ class BookmarkManager extends ChangeNotifier {
       }
     }
   }
+
+  Future<void> clearBookmarks() async {
+    _bookmarkedWords.clear();
+    notifyListeners();
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('bookmarks');
+  }
 }

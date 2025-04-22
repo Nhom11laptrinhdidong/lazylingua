@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 
 import '../viewModel/bookmark.dart';
-import '../viewModel/steak_manager.dart';
+import '../viewModel/streak_manager.dart';
 
 class ProfileScreen extends StatelessWidget {
   final User? user;
@@ -135,8 +135,10 @@ class ProfileScreen extends StatelessWidget {
                   onPressed: () async {
                     final bookmarkManager = Provider.of<BookmarkManager>(context, listen: false);
                     await bookmarkManager.saveToFirebase(FirebaseAuth.instance.currentUser!.uid);
+                    await bookmarkManager.clearBookmarks();
                     StreakManager streakManager = StreakManager();
                     await streakManager.saveStreakToFirestore();
+                    await streakManager.resetStreak();
                     await FirebaseAuth.instance.signOut();
                     Navigator.pushReplacementNamed(context, '/home');
                   },

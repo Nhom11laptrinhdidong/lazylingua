@@ -2,12 +2,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lazylingua/viewModel/quiz_view_model.dart';
 import 'package:lazylingua/viewModel/splash_view_model.dart';
+import 'package:lazylingua/viewModel/streak_manager.dart';
 import 'package:lazylingua/viewModel/translate_view_model.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
 import 'viewModel/bookmark.dart';
-import 'viewModel/steak_manager.dart';
 import 'viewModel/chat_view_model.dart';
 import 'viewModel/chat_service.dart';
 

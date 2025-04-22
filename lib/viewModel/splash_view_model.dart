@@ -1,9 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lazylingua/viewModel/streak_manager.dart';
 import 'package:provider/provider.dart';
 import '../viewModel/bookmark.dart';
-import '../viewModel/steak_manager.dart';
-
 class SplashViewModel extends ChangeNotifier {
   Future<void> checkLogin(BuildContext context) async {
     await Future.delayed(Duration(seconds: 2)); // Hiệu ứng splash
