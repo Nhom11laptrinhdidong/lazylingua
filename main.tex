@@ -1,0 +1,114 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{vietnam} % For Vietnamese language support
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing, decorations.markings, decorations.pathreplacing, calc, patterns, positioning}
+
+\definecolor{uthblue}{RGB}{0, 128, 128}
+\definecolor{uthorange}{RGB}{240, 80, 35}
+
+\begin{document}
+
+% Remove page number
+\thispagestyle{empty}
+
+% Create an elegant decorative frame
+\begin{tikzpicture}[remember picture, overlay]
+    % Main frame
+    \draw[line width=1.5pt, uthblue] 
+        ([shift={(1.5cm,1.5cm)}]current page.south west) rectangle 
+        ([shift={(-1.5cm,-1.5cm)}]current page.north east);
+    
+    % Secondary frame (inner)
+    \draw[line width=0.8pt, uthblue] 
+        ([shift={(2cm,2cm)}]current page.south west) rectangle 
+        ([shift={(-2cm,-2cm)}]current page.north east);
+    
+    % Decorative corners - outer frame
+    % Top-left corner
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,-1.5cm)}]current page.north west) -- ++(1cm,0) -- ++(0,-1cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,-1.5cm)}]current page.north west) -- ++(0,-1cm) -- ++(1cm,0);
+    
+    % Top-right corner
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,-1.5cm)}]current page.north east) -- ++(-1cm,0) -- ++(0,-1cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,-1.5cm)}]current page.north east) -- ++(0,-1cm) -- ++(-1cm,0);
+    
+    % Bottom-left corner
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,1.5cm)}]current page.south west) -- ++(1cm,0) -- ++(0,1cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,1.5cm)}]current page.south west) -- ++(0,1cm) -- ++(1cm,0);
+    
+    % Bottom-right corner
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,1.5cm)}]current page.south east) -- ++(-1cm,0) -- ++(0,1cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,1.5cm)}]current page.south east) -- ++(0,1cm) -- ++(-1cm,0);
+    
+    % Decorative elements at midpoints of the frame
+    % Top
+    \draw[uthblue, line width=1.5pt] ([shift={(0,-1.5cm)}]current page.north) -- ++(0,0.5cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(0,-1.5cm)}]current page.north) ++(0.5cm,0) arc (0:180:0.5cm);
+    
+    % Bottom
+    \draw[uthblue, line width=1.5pt] ([shift={(0,1.5cm)}]current page.south) -- ++(0,-0.5cm);
+    \draw[uthblue, line width=1.5pt] ([shift={(0,1.5cm)}]current page.south) ++(0.5cm,0) arc (0:-180:0.5cm);
+    
+    % Left
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,0)}]current page.west) -- ++(-0.5cm,0);
+    \draw[uthblue, line width=1.5pt] ([shift={(1.5cm,0)}]current page.west) ++(0,0.5cm) arc (90:270:0.5cm);
+    
+    % Right
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,0)}]current page.east) -- ++(0.5cm,0);
+    \draw[uthblue, line width=1.5pt] ([shift={(-1.5cm,0)}]current page.east) ++(0,0.5cm) arc (90:-90:0.5cm);
+\end{tikzpicture}
+
+% Content
+\begin{center}
+    \vspace*{0.5cm}
+    {\Large\bfseries TRƯỜNG ĐẠI HỌC GIAO THÔNG VẬN TẢI TP. HCM}\\
+    \vspace{0.2cm}
+    {\large\bfseries KHOA CÔNG NGHỆ THÔNG TIN}
+    
+    \vspace{1.5cm}
+    
+  
+    \includegraphics[width=10cm]{ảnh/Picture1.png}
+    
+    \vspace{2cm}
+    
+    {\Large\bfseries ĐỒ ÁN}\\
+    \vspace{0.2cm}
+    {\Large\bfseries LẬP TRÌNH THIẾT BỊ DI ĐỘNG}
+    
+    \vspace{1.8cm}
+    
+    {\LARGE\bfseries\textcolor{uthorange}{TÊN ĐỀ TÀI}}
+    
+    \vspace{0.8cm}
+    
+    {\large\bfseries APP HỌC TIẾNG ANH LAZYLINGUA\\}
+   
+   \vspace{0.5cm}
+    
+    {\large\bfseries NHÓM 11}
+   
+    
+    \vspace{2cm}
+    
+    \begin{center}
+    \begin{tabular}{ll}
+    \textbf{GVHD: Trương Quang Tuấn} & \\
+    \textbf{LHP: 010112103404 - CN22E} & \\
+    \end{tabular}
+    \end{flushright}
+\end{center}
+\vspace{2cm}
+ \begin{center}
+    \begin{tabular}{ll}
+     \textbf{TP. HỒ CHÍ MINH:} & \\
+    \end{tabular}
+    \end{flushright}
+\end{center}
+
+
+\newpage
+\input{phancong}
