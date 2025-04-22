@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:lazylingua/viewModel/steak_manager.dart';
 import 'package:provider/provider.dart';
 import '../UI/FlashCard.dart';
 import '../UI/Quiz.dart';
@@ -9,6 +8,7 @@ import '../UI/User.dart';
 import '../viewModel/bookmark.dart';
 import '../UI/dictionary_screen.dart';
 import '../viewModel/home_view_model.dart';
+import '../viewModel/streak_manager.dart';
 
 class HomePage extends StatefulWidget {
   @override

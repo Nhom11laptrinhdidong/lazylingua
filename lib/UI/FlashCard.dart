@@ -133,31 +133,18 @@ class _FlashCardScreenState extends State<FlashCardScreen> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              currentWord['word'],
-                              style: TextStyle(
-                                fontSize: 32,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                                shadows: [
-                                  Shadow(
-                                    blurRadius: 3.0,
-                                    color: Colors.black,
-                                    offset: Offset(1.0, 1.0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            SizedBox(height: 20),
-                            if (showAnswer) ...[
-                              if (phonetic.isNotEmpty)
+                        child: Center(
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
                                 Text(
-                                  "Phonetic: $phonetic",
+                                  currentWord['word'],
                                   style: TextStyle(
-                                    fontSize: 20,
+                                    fontSize: 32,
+                                    fontWeight: FontWeight.bold,
                                     color: Colors.white,
                                     shadows: [
                                       Shadow(
@@ -167,37 +154,67 @@ class _FlashCardScreenState extends State<FlashCardScreen> {
                                       ),
                                     ],
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
-                              SizedBox(height: 10),
-                              Text(
-                                "Meaning: $definition",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 3.0,
-                                      color: Colors.black,
-                                      offset: Offset(1.0, 1.0),
+                                SizedBox(height: 20),
+                                if (showAnswer) ...[
+                                  if (phonetic.isNotEmpty)
+                                    Text(
+                                      "Phonetic: $phonetic",
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.white,
+                                        shadows: [
+                                          Shadow(
+                                            blurRadius: 3.0,
+                                            color: Colors.black,
+                                            offset: Offset(1.0, 1.0),
+                                          ),
+                                        ],
+                                      ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ] else
-                              Text(
-                                "Tap this card to reveal",
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 3.0,
-                                      color: Colors.black,
-                                      offset: Offset(1.0, 1.0),
+                                  SizedBox(height: 10),
+                                  Container(
+                                    constraints: BoxConstraints(
+                                      maxHeight: 120, // Chỉ cho phép definition hiển thị trong khoảng này
                                     ),
-                                  ],
-                                ),
-                              ),
-                          ],
+                                    child: SingleChildScrollView(
+                                      child: Text(
+                                        "Meaning: $definition",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.white,
+                                          shadows: [
+                                            Shadow(
+                                              blurRadius: 3.0,
+                                              color: Colors.black,
+                                              offset: Offset(1.0, 1.0),
+                                            ),
+                                          ],
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  ),
+                                ] else
+                                  Text(
+                                    "Tap this card to reveal",
+                                    style: TextStyle(
+                                      color: Colors.white70,
+                                      shadows: [
+                                        Shadow(
+                                          blurRadius: 3.0,
+                                          color: Colors.black,
+                                          offset: Offset(1.0, 1.0),
+                                        ),
+                                      ],
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -211,9 +228,14 @@ class _FlashCardScreenState extends State<FlashCardScreen> {
                           isBookmarked ? Icons.bookmark : Icons.bookmark_border,
                           color: isBookmarked ? Colors.amber : null,
                         ),
-                        onPressed: () {
-                          context.read<BookmarkManager>().toggleBookmark(currentWord);
-                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          foregroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
+                          ),
+                        ),
+                        onPressed: () {context.read<BookmarkManager>().toggleBookmark(currentWord);},
                       ),
                       SizedBox(width: 8),
                       ElevatedButton.icon(

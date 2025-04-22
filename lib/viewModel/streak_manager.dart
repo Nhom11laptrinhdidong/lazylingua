@@ -69,4 +69,11 @@ class StreakManager extends ChangeNotifier{
       }
     }
   }
+
+  Future<void> resetStreak() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setInt('currentStreak', 0);
+    await prefs.setInt('highestStreak', 0);
+    notifyListeners();
+  }
 }

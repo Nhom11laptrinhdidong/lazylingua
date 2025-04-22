@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:lazylingua/viewModel/streak_manager.dart';
 import '../model/quiz_question.dart';
-import 'steak_manager.dart';
 
 class QuizViewModel extends ChangeNotifier {
   final List<dynamic> allWords;

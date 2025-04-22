@@ -18,7 +18,45 @@ class QuizScreen extends StatelessWidget {
             );
           }
           return Scaffold(
-            appBar: AppBar(title: const Text('Mini Quiz')),
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(kToolbarHeight),
+              child: Container(
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/nen.png'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: AppBar(
+                  backgroundColor: Colors.transparent,
+                  elevation: 0,
+                  flexibleSpace: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Container(
+                      width: double.infinity,
+                      height: kToolbarHeight,
+                      margin: EdgeInsets.only(bottom: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.only(left: 16),
+                      child: Text(
+                        "Mini Quiz",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                  // Remove the title since we're using flexibleSpace
+                  title: null,
+                ),
+              ),
+            ),
             body: Stack(
               children: [
                 Positioned.fill(
@@ -48,36 +86,48 @@ class QuizScreen extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        'Definition:',
-                        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      Text(vm.currentQuestion.definition, style: const TextStyle(fontSize: 18)),
-                      const SizedBox(height: 24),
-                      ...vm.currentQuestion.options.map((opt) {
-                        final isCorrect = opt == vm.currentQuestion.correctAnswer;
-                        Color color;
-                        if (!vm.showResult) color = Colors.grey.shade200;
-                        else if (opt == vm.selectedOption) color = isCorrect ? Colors.green : Colors.red;
-                        else if (isCorrect) color = Colors.green;
-                        else color = Colors.grey.shade200;
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Definition:',
+                                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                vm.currentQuestion.definition,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              const SizedBox(height: 24),
+                              ...vm.currentQuestion.options.map((opt) {
+                                final isCorrect = opt == vm.currentQuestion.correctAnswer;
+                                Color color;
+                                if (!vm.showResult) color = Colors.grey.shade200;
+                                else if (opt == vm.selectedOption) color = isCorrect ? Colors.green : Colors.red;
+                                else if (isCorrect) color = Colors.green;
+                                else color = Colors.grey.shade200;
 
-                        return Card(
-                          color: color,
-                          child: ListTile(
-                            title: Text(opt),
-                            onTap: vm.showResult ? null : () => vm.checkAnswer(opt),
-                          ),
-                        );
-                      }).toList(),
-                      const SizedBox(height: 20),
-                      if (vm.showResult)
-                        Center(
-                          child: ElevatedButton(
-                            onPressed: vm.generateQuestion,
-                            child: const Text('Next'),
+                                return Card(
+                                  color: color,
+                                  child: ListTile(
+                                    title: Text(opt),
+                                    onTap: vm.showResult ? null : () => vm.checkAnswer(opt),
+                                  ),
+                                );
+                              }).toList(),
+                              const SizedBox(height: 20),
+                              if (vm.showResult)
+                                Center(
+                                  child: ElevatedButton(
+                                    onPressed: vm.generateQuestion,
+                                    child: const Text('Next'),
+                                  ),
+                                ),
+                            ],
                           ),
                         ),
+                      ),
                     ],
                   ),
                 ),

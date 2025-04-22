@@ -17,11 +17,11 @@ class _LoginScreenState extends State<LoginScreen> {
       backgroundColor: Colors.white,
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
-          : Center(
-        child: Padding(
+          : SafeArea(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.all(32.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('assets/images/logolazy.png', height: 120),
               SizedBox(height: 32),
